@@ -12,8 +12,15 @@
             <h1>Фотогалерея</h1>
         </div>
         <div class="header__search">
-            <input class="search_style" type="text" value="winter">
-            <button class="search_button">Поиск</button>
+            <input 
+                class="search_style" 
+                autofocus="autofocus" 
+                type="text" 
+                value="" 
+                placeholder="Найти изображения"
+                autocomplete="off"
+                >
+            <a class="search_button">Поиск</a>
         </div>
     </header>
     <main>
@@ -21,8 +28,17 @@
 
         </div>
     </main>
-    
-    
+    <footer>
+        <div class="footer__autor">
+            <a href="https://github.com/kabdia"><img src="./icon/github.svg" alt="github"></a>
+            <p>2024 г</p>
+        </div>
+        <div class="footer__links">
+            <a href="https://rs.school/courses/javascript-preschool-ru">
+                <img src="./icon/rss-logo.svg" alt="rs">
+            </a>
+        </div>
+    </footer>    
     <script src="app.js"></script>
 </body>
 </html>

@@ -1,8 +1,15 @@
 let button = document.querySelector('.search_button');
 let div = document.querySelector('.main__container');
+let input = document.querySelector('.search_style');
+
 getPhotos();
+
 button.addEventListener('click', getPhotos); 
-    
+input.addEventListener('keyup',function(e){
+    if (e.key === 'Enter') {
+        getPhotos();
+    };
+})
 function getPhotos() {  
     div.innerHTML = ''; 
     let request = document.querySelector('.search_style').value;
@@ -16,11 +23,13 @@ function getPhotos() {
     });
 }
 
-function showData(data) {    
+function showData(data) {   
+    console.log(data) 
     data.results.map(photo => {
         const img = document.createElement("img");
         img.src = photo.urls.regular;    
-        img.classList.add('img-style')    
+        img.classList.add('img-style');
+        img.alt = photo.alt_description;          
         div.appendChild(img);            
     });    
 }
