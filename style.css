@@ -15,7 +15,7 @@ body {
     min-height: 100vh;
     
 }
-a,button {
+a,button,span {
     cursor:url(./icon/pointer.svg), auto;
 }
 header {
@@ -29,6 +29,11 @@ header {
     margin: 0 auto;    
     font-size: clamp(2rem,2vw,3rem);
 }
+.header__search {
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
 .search_style {
     max-width: 500px;  
     height:45px;
@@ -36,7 +41,18 @@ header {
     border:1px solid black;
     padding:10px;
     font-size: 1em;
-    font-family: "Caveat", cursive;
+    font-family: "Caveat", cursive;    
+}
+.search__container {
+    position: relative;
+}
+.search_close {
+    position: absolute;
+    top:0px;
+    right:10px; 
+}
+.noactive {
+    display:none;
 }
 main { 
     display: flex;   
@@ -119,9 +135,15 @@ footer img {
 
 @media screen and (max-width:470px) {
     header {
-        font-size: clamp(1rem,2vw,2rem);
+        font-size: clamp(1rem,2vw,2rem);        
     }
     .search_style {
         max-width: 200px; 
+    }
+    .search_close {
+        position: absolute;
+        top:10px;
+        right:10px; 
+        
     }
 }

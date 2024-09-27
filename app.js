@@ -1,7 +1,7 @@
 let button = document.querySelector('.search_button');
 let div = document.querySelector('.main__container');
 let input = document.querySelector('.search_style');
-
+let close = document.querySelector('.search_close');
 
 
 button.addEventListener('click', getPhotos); 
@@ -10,6 +10,13 @@ input.addEventListener('keyup',function(e){
         getPhotos();
     };
 })
+input.addEventListener('input', function() {
+    close.classList.remove('noactive');
+    close.addEventListener('click', function() {
+        input.value = '';
+        close.classList.add('noactive');
+    })
+});
 
 function getPhotos() {  
     div.innerHTML = ''; 
@@ -43,7 +50,7 @@ function showData(data) {
 function showError(){
     div.innerHTML = '';
     const p = document.createElement('p');
-    p.classList.add('container_p')
+    p.classList.add('container_p');
     p.innerHTML = 'Фото на данную тематику отсутствуют. Переформулируйте запрос';
     div.appendChild(p);
 }
