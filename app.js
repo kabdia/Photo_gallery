@@ -3,6 +3,7 @@ let div = document.querySelector('.main__container');
 let input = document.querySelector('.search_style');
 let close = document.querySelector('.search_close');
 
+getPhotosLoadedPage();
 
 button.addEventListener('click', getPhotos); 
 input.addEventListener('keyup',function(e){
@@ -43,8 +44,7 @@ function showData(data) {
         });
     } else {
         showError();
-    }
-        
+    }        
 }
 
 function showError(){
@@ -54,5 +54,29 @@ function showError(){
     p.innerHTML = 'Фото на данную тематику отсутствуют. Переформулируйте запрос';
     div.appendChild(p);
 }
+
+function getPhotosLoadedPage() {     
+    const key = 'N8xUIpesUuaBuYS5DB49XB1_jYgHNhbR7iongEdYD5g';    
+    const res = `https://api.unsplash.com/photos?client_id=${key}`;
+      
+    fetch(res)
+     .then((res) => res.json())
+     .then((data) => {  
+        console.log(data)                 
+        showLoaded(data)       
+    });    
+}
+function showLoaded(data) {
+    div.innerHTML = '';
+    data.map(photo => {
+        const img = document.createElement("img");
+        img.src = photo.urls.regular;    
+        img.classList.add('img-style');
+        img.alt = photo.alt_description;          
+        div.appendChild(img);            
+    });
+}
+
+
 
 
